@@ -21,7 +21,6 @@
 		flex-wrap: wrap; 
 		line-height: 30px;
 		position : fixed;
-
 	}
 	
 	.link {
@@ -60,6 +59,12 @@
 	#imgCV {
 		width: 100%;
 	}
+
+
+    form > input, form > textarea, form > label {
+        display: block;
+        margin-bottom: 5px;
+    }
 	
 </style>	
 </head>
@@ -109,7 +114,53 @@
 		<img id="Pilt27" src="29.jpg">
 	</div>
 	
-	<h1>Kontakt</h1>	
-	
+	<h1>Kontakt</h1>
+  <form name="contact" method="post">
+	  <label>Name</label>
+	  <input type="text" name="name" />
+	  <label>Subject</label>
+	  <input type="text" name="subject" />
+	  <label>Phone Number</label>
+	  <input type="text" name="phone" />
+	  <label>Message</label>
+	  <textarea name="message"></textarea>
+
+	  <input type="submit" name="send" value="Send Message" />
+  </form>
+
+  <script>
+      var form = document.forms["contact"];
+      form.addEventListener('submit',contact_submit,false);
+
+      function contact_submit(e) {
+          // Stop Form From Submitting
+          e.preventDefault();
+
+          // Set Initial Variables
+          var target = e.target || e.srcElement;
+          var to = 'kimmo.kuznetsov@tptlive.ee';
+          var uri = 'mailto:' + to;
+          var body = '';
+
+          // Set Form Values to Variables
+          var name = target.elements['name'].value;
+          var subject = target.elements['subject'].value;
+          var phone = target.elements['phone'].value;
+          var message = target.elements['message'].value;
+
+          // Build Body / Message with all Input Fields
+          body += message + "\r\n\r\n";
+          body += "Name: " + name + "\r\n";
+          body += "Phone Number: " + phone + "\r\n";
+
+          // Build final Mailto URI
+          uri += '?subject=' + encodeURIComponent(subject);
+          uri += '&body=' + encodeURIComponent(body);
+
+          // Open Mailto in New Window / Tab
+          window.open(uri,'_blank');
+      }
+  </script>
+
 </body>
 </html>
