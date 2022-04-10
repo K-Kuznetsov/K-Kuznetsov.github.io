@@ -36,6 +36,9 @@
             width: 80%;
             margin: 30px auto;
         }
+        .portfolio {
+	        max-height: 500px;
+        }
 
         #Button1 {
             flex-wrap: wrap;
@@ -82,11 +85,9 @@
 
 <img class="CV" src="2.jpg"></header>
 
-<main><div class="container text-center">
-
 	<!-- Large modal -->
-	<button class="btn btn-default" data-toggle="modal" data-target=".bs-example-modal-lg">
-		<img id="portfolio" src="Portfolio.jpg" height="540" width="800"/>
+	<main><button class="btn btn-default" data-toggle="modal" data-target=".bs-example-modal-lg">
+		<img class="portfolio" src="Portfolio.jpg"/>
 	</button>
 
 	<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
@@ -217,7 +218,7 @@
 			</div>
 		</div>
 	</div>
-</div></main>
+</main>
 
 <footer><h1>Teenused</h1>
 <p>Projekteerimine, konsultatsioon ja seadustamine.</p>
